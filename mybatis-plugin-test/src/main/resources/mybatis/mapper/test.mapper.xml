@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--<mapper namespace="mybatisEntity">-->
+<mapper namespace="me.abel.mybatis.plugin.mapper.TestMapper">
+    <!--无条件查询-->
+    <select id="list" resultType="me.abel.mybatis.plugin.model.TestModel">
+        SELECT name ,code FROM test
+    </select>
+    <!--通过id查询-->
+    <select id="get" resultType="me.abel.mybatis.plugin.model.TestModel">
+        SELECT name ,code FROM test WHERE id=#{_parameter}
+    </select>
+
+    <!--add-->
+    <insert id="add">
+        INSERT INTO test(name,code)VALUES(#{name},#{code})
+    </insert>
+
+    <update id="upd" parameterType="map">
+        update test set name = #{name} where id = #{id}
+    </update>
+    <!--delete-->
+    <delete id="del">
+        DELETE FROM test WHERE id=#{id}
+    </delete>
+</mapper>
